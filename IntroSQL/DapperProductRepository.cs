@@ -43,7 +43,11 @@ namespace IntroSQL
 
             _connection.Execute("DELETE FROM products WHERE ProductID = @productid;",
                 new { ProductID = productid });
+        }
 
+        public IEnumerable<Product> GetComputers()
+        {
+            return _connection.Query<Product>("SELECT * FROM Products WHERE CategoryID = 1;").ToList();
         }
 
     }

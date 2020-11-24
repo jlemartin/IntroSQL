@@ -59,7 +59,13 @@ namespace IntroSQL
 
             //prodRepo.UpdateStockLevel(940, "100");
 
-            prodRepo.DeleteProduct(941);
+            // prodRepo.DeleteProduct(941);
+
+            var allComputers = prodRepo.GetComputers();
+            foreach (var comp in allComputers)
+            {
+                Console.WriteLine($"{comp.ProductID} : {comp.Name} : {comp.Price}");
+            }
         }
     }
 }
