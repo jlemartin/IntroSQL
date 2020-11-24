@@ -45,11 +45,13 @@ namespace IntroSQL
                 new { ProductID = productid });
         }
 
+        // Returns list of Computers
         public IEnumerable<Product> GetComputers()
         {
             return _connection.Query<Product>("SELECT * FROM Products WHERE CategoryID = 1;").ToList();
         }
 
+        // Returns list of products with given CategoryID
         public IEnumerable<Product> GetCategoryProducts(int categoryID)
         {
             return _connection.Query<Product>("SELECT * FROM Products WHERE CategoryID = @categoryID;",

@@ -61,12 +61,19 @@ namespace IntroSQL
 
             // prodRepo.DeleteProduct(941);
 
-            //var allComputers = prodRepo.GetComputers();
-            var catOfProducts = prodRepo.GetCategoryProducts(1);
+            var allComputers = prodRepo.GetComputers();
+            var catOfProducts = prodRepo.GetCategoryProducts(2);
 
-            foreach (var comp in catOfProducts)
+            //foreach (var comp in catOfProducts)
+            //{
+            //    Console.WriteLine($"{comp.ProductID} : {comp.Name} : {comp.Price}");
+            //}
+
+            var empRepo = new DapperEmployeeRepository(conn);
+            var allEmployees = empRepo.GetAllEmployees();
+            foreach (var emp in allEmployees)
             {
-                Console.WriteLine($"{comp.ProductID} : {comp.Name} : {comp.Price}");
+                Console.WriteLine($"{emp.EmployeeID} : {emp.LastName} : {emp.Title} : {emp.DateOfBirth}");
             }
         }
     }
