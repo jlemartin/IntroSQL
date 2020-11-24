@@ -71,10 +71,23 @@ namespace IntroSQL
 
             var empRepo = new DapperEmployeeRepository(conn);
             var allEmployees = empRepo.GetAllEmployees();
+
+            //Console.WriteLine("What is the new employee's First Name?");
+            //var FirstName = Console.ReadLine();
+            //Console.WriteLine("What is the new employee's Middle Initial?");
+            //var MiddleInitial = Console.ReadLine();
+            //Console.WriteLine("What is the new employee's Last Name?");
+            //var LastName = Console.ReadLine();
+            //Console.WriteLine("What is the new employee's Job Title?");
+            //var Title = Console.ReadLine();
+
+            // empRepo.AddEmployee(FirstName, MiddleInitial, LastName, Title);
+
             foreach (var emp in allEmployees)
             {
-                Console.WriteLine($"{emp.EmployeeID} : {emp.LastName} : {emp.Title} : {emp.DateOfBirth}");
+                Console.WriteLine($"{emp.EmployeeID} : {emp.LastName} : {emp.Title}");
             }
+
         }
     }
 }

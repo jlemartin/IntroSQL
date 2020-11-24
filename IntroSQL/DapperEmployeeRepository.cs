@@ -19,5 +19,18 @@ namespace IntroSQL
         {
             return _connection.Query<Employee>("SELECT * FROM employees;").ToList();
         }
+
+        public void AddEmployee(string FirstName, string MiddleInitial, string LastName, string Title)
+        {
+            _connection.Execute("INSERT INTO employees (FirstName, MiddleInitial, LastName, Title) " +
+                "VALUES (@FirstName, @MiddleInitial, @LastName, @Title);",
+                new { FirstName = FirstName, MiddleInitial = MiddleInitial, LastName = LastName, Title = Title });
+        }
+
+        //public void UpdateEmail(int employeeID, string email)
+        //{
+        //    _connection.Execute("UPDATE employees SET EmailAddress = @email WHERE EmployeeID = @employeeID;",
+        //        new { EmployeeID = employeeID, EmailAddress = email });
+        //}
     }
 }
