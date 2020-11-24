@@ -50,5 +50,11 @@ namespace IntroSQL
             return _connection.Query<Product>("SELECT * FROM Products WHERE CategoryID = 1;").ToList();
         }
 
+        public IEnumerable<Product> GetCategoryProducts(int categoryID)
+        {
+            return _connection.Query<Product>("SELECT * FROM Products WHERE CategoryID = @categoryID;",
+                new { CategoryID = categoryID }).ToList();
+        }
+
     }
 }

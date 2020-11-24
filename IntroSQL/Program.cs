@@ -61,8 +61,10 @@ namespace IntroSQL
 
             // prodRepo.DeleteProduct(941);
 
-            var allComputers = prodRepo.GetComputers();
-            foreach (var comp in allComputers)
+            //var allComputers = prodRepo.GetComputers();
+            var catOfProducts = prodRepo.GetCategoryProducts(1);
+
+            foreach (var comp in catOfProducts)
             {
                 Console.WriteLine($"{comp.ProductID} : {comp.Name} : {comp.Price}");
             }
