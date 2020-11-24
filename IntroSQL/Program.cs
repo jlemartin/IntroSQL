@@ -15,24 +15,51 @@ namespace IntroSQL
                 .AddJsonFile("appsettings.json")
                 .Build();
 
+            // Creating connection string using info from appsettings.json file
             string connString = config.GetConnectionString("DefaultConnection");
 
+            // Using that string to make connection to database
             IDbConnection conn = new MySqlConnection(connString);
-            var repo = new DapperDepartmentRepository(conn);
 
-            Console.WriteLine("Type a new Department name");
+            var deptRepo = new DapperDepartmentRepository(conn);
 
-            var newDepartment = Console.ReadLine();
+            //Console.WriteLine("Type a new Department name");
 
-            repo.InsertDepartment(newDepartment);
+            //var newDepartment = Console.ReadLine();
 
-            var departments = repo.GetAllDepartments();
+            //deptRepo.InsertDepartment(newDepartment);
+
+            var departments = deptRepo.GetAllDepartments();
 
             foreach (var dept in departments)
             {
-                Console.WriteLine(dept.Name);
+                Console.WriteLine($"{dept.DepartmentID} : {dept.Name}");
             }
+            Console.WriteLine();
 
+            // Creating new Product Repository
+            var prodRepo = new DapperProductRepository(conn);
+
+            // Bringing in all Products from database
+            var allProducts = prodRepo.GetAllProducts();
+
+            // take a look
+            //foreach (var prod in allProducts)
+            //{
+            //    Console.WriteLine($"{prod.ProductID} : {prod.Name} : {prod.Price} : {prod.CategoryID} : {prod.OnSale} : {prod.StockLevel}");
+            //}
+
+            // Adding a new item in the Products table
+            //prodRepo.CreateProduct("MacBook Air", 1000.00, 1);
+
+            //foreach (var prod in allProducts)
+            //{
+            //    Console.WriteLine($"{prod.ProductID} : {prod.Name} : {prod.Price} : {prod.CategoryID} : {prod.OnSale} : {prod.StockLevel}");
+            //}
+
+            //prodRepo.UpdateStockLevel(940, "100");
+
+            prodRepo.DeleteProduct(941);
         }
     }
 }
