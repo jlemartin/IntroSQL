@@ -27,10 +27,10 @@ namespace IntroSQL
                 new { FirstName = FirstName, MiddleInitial = MiddleInitial, LastName = LastName, Title = Title });
         }
 
-        //public void UpdateEmail(int employeeID, string email)
-        //{
-        //    _connection.Execute("UPDATE employees SET EmailAddress = @email WHERE EmployeeID = @employeeID;",
-        //        new { EmployeeID = employeeID, EmailAddress = email });
-        //}
+        public void UpdateEmail(int employeeID, string emailAddress)
+        {
+            _connection.Execute("UPDATE Employees SET EmailAddress = @emailAddress WHERE EmployeeID = @employeeID;",
+                new { EmployeeID = employeeID, EmailAddress = emailAddress });
+        }
     }
 }

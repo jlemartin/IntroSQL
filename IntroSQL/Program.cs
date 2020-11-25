@@ -88,6 +88,10 @@ namespace IntroSQL
                 Console.WriteLine($"{emp.EmployeeID} : {emp.LastName} : {emp.Title}");
             }
 
+            // Updating EmailAddress in database with method
+            var emailAddress = "jethro0@notreallybestbuy.com";
+            empRepo.UpdateEmail(34618, emailAddress);
+
         }
     }
 }
